@@ -22,7 +22,8 @@ export default function SearchField() {
 
   return (
     <div>
-      <select defaultValue={"Region"} name="regions">
+      <form>
+      <select defaultValue={"NA1"} name="regions">
         {regionOptions.map((region) => (
           <option key={region} value={region}>
             {region}
@@ -30,6 +31,8 @@ export default function SearchField() {
         ))}
       </select>
       <input type="text" placeholder="Summoner Name" />
+      <button type="submit">Search</button>
+      </form>
     </div>
   );
 }
