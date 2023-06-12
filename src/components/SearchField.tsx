@@ -1,5 +1,7 @@
 'use client';
 
+import { useState } from "react";
+
 export default function SearchField() {
   const regionOptions = [
     "BR1",
@@ -19,6 +21,8 @@ export default function SearchField() {
     "TW2",
     "VN2",
   ];
+
+  const [summonerId, setSummonerId] = useState("");
 
   return (
     <div>
