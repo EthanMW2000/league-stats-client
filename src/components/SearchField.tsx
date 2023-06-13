@@ -1,4 +1,4 @@
-'use client';
+"use client";
 
 import { useState } from "react";
 
@@ -24,19 +24,31 @@ export default function SearchField() {
 
   const [summonerId, setSummonerId] = useState("");
 
+  const searchSummoner = async () => {
+    const summonerName = document.getElementById("name") as HTMLInputElement;
+    const region = document.getElementById("region") as HTMLSelectElement;
+    const url = `https://${region.value}.api.riotgames.com/lol/summoner/v4/summoners/by-name/${summonerName.value}`;
+    const response = await fetch(url, {
+      method: "GET",
+      headers: {
+        "X-Riot-Token": process.env.NEXT_PUBLIC_API_TOKEN as string,
+      },
+    });
+    const data = await response.json();
+    console.log(data);
+  };
+
   return (
     <div>
-      <form>
-      <select defaultValue={"NA1"} name="regions">
-        {regionOptions.map((region) => (
-          <option key={region} value={region}>
-            {region}
-          </option>
-        ))}
-      </select>
-      <input type="text" placeholder="Summoner Name" />
-      <button type="submit">Search</button>
-      </form>
+        <select id="region" defaultValue={"NA1"} name="regions">
+          {regionOptions.map((region) => (
+            <option key={region} value={region}>
+              {region}
+            </option>
+          ))}
+        </select>
+        <input id="name" type="text" placeholder="Summoner Name" />
+        <button onClick={searchSummoner}>Search</button>
     </div>
   );
 }
