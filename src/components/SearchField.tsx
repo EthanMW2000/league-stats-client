@@ -1,6 +1,7 @@
 "use client";
 
 import { useRouter } from "next/navigation";
+import styles from "../app/styles.module.css";
 
 export default function SearchField() {
   const regionOptions = [
@@ -27,11 +28,17 @@ export default function SearchField() {
     const name = document.getElementById("name") as HTMLInputElement;
     const region = document.getElementById("region") as HTMLSelectElement;
 
+    if (name.value.length === 0) {
+      alert("Please enter a summoner name.");
+      return;
+    }
+
     router.push(`/summoner/${region.value}/${name.value}`);
   };
 
   return (
     <div>
+      <div className={styles.searchBar}>
         <select id="region" defaultValue={"NA1"} name="regions">
           {regionOptions.map((region) => (
             <option key={region} value={region}>
@@ -40,7 +47,10 @@ export default function SearchField() {
           ))}
         </select>
         <input id="name" type="text" placeholder="Summoner Name" />
-        <button onClick={searchSummoner}>Search</button>
+        <button id="search" onClick={searchSummoner}>
+          Search
+        </button>
+      </div>
     </div>
   );
 }
