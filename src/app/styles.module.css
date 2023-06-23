@@ -30,8 +30,6 @@
 
 .searchBar select:focus {
   outline: none;
-  background-color: #4B4C5330;
-  width: 100%;
 }
 
 .searchBar input {
