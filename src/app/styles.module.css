@@ -12,24 +12,27 @@
 }
 
 .searchBar {
-  display: inline;
+  display: flex;
+  flex-direction: row;
   background-color: black;
   padding: 10px;
   border-radius: 5px;
+  width: 350px;
 }
 
-.searchBar select {
+.dropdown {
   height: 40px;
-  border: none;
-  border-radius: 5px;
+  width: 100px;
+  border-width: 0px;
+  cursor: pointer;
   padding: 0 10px;
   font-size: 16px;
   color: white;
-  background-color: transparent;
-}
-
-.searchBar select:focus {
-  outline: none;
+  background-color: black;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .searchBar input {
@@ -49,12 +52,13 @@
   appearance: none;
 }
 
-.searchBar button {
+.searchButton {
   height: 40px;
+  cursor: pointer;
   border: none;
   border-radius: 5px;
   padding: 0 10px;
   font-size: 16px;
   color: white;
-  background-color: transparent;
+  background-color: rgb(52, 52, 52);
 }

@@ -2,6 +2,8 @@
 
 import { useRouter } from "next/navigation";
 import styles from "../app/styles.module.css";
+import { useState } from "react";
+import ExpandMoreIcon from "./icons/ExpandMoreIcon";
 
 export default function SearchField() {
   const regionOptions = [
@@ -22,6 +24,7 @@ export default function SearchField() {
     "TW2",
     "VN2",
   ];
+  const [region, setRegion] = useState("NA1");
   const router = useRouter();
 
   const searchSummoner = () => {
@@ -39,15 +42,12 @@ export default function SearchField() {
   return (
     <div>
       <div className={styles.searchBar}>
-        <select id="region" defaultValue={"NA1"} name="regions">
-          {regionOptions.map((region) => (
-            <option key={region} value={region}>
-              {region}
-            </option>
-          ))}
-        </select>
+          <button className={styles.dropdown} id="region">
+            {region}
+            <ExpandMoreIcon />
+          </button>
         <input id="name" type="text" placeholder="Summoner Name" />
-        <button id="search" onClick={searchSummoner}>
+        <button className={styles.searchButton} id="search" onClick={searchSummoner}>
           Search
         </button>
       </div>
