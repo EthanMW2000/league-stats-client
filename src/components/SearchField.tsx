@@ -39,10 +39,14 @@ export default function SearchField() {
     router.push(`/summoner/${region.value}/${name.value}`);
   };
 
+  const openDropdown = () => {
+    throw new Error("Not implemented");
+  };
+
   return (
     <div>
       <div className={styles.searchBar}>
-          <button className={styles.dropdown} id="region">
+          <button className={styles.dropdown} id="region" onClick={openDropdown}>
             {region}
             <ExpandMoreIcon />
           </button>
