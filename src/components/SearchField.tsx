@@ -40,18 +40,29 @@ export default function SearchField() {
   };
 
   const openDropdown = () => {
-    throw new Error("Not implemented");
+    <div className={styles.dropdownOverlay}>
+      <button>Close</button>
+      {regionOptions.map((region) => (
+        <button onClick={() => setRegion(region)} key={region}>
+          {region}
+        </button>
+      ))}
+    </div>;
   };
 
   return (
     <div>
       <div className={styles.searchBar}>
-          <button className={styles.dropdown} id="region" onClick={openDropdown}>
-            {region}
-            <ExpandMoreIcon />
-          </button>
+        <button className={styles.dropdown} id="region" onClick={openDropdown}>
+          {region}
+          <ExpandMoreIcon />
+        </button>
         <input id="name" type="text" placeholder="Summoner Name" />
-        <button className={styles.searchButton} id="search" onClick={searchSummoner}>
+        <button
+          className={styles.searchButton}
+          id="search"
+          onClick={searchSummoner}
+        >
           Search
         </button>
       </div>
